@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Property System - Sales Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            color: #111827;
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 0.5rem;
+            background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.125rem;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: #111827;
+        }
+
+        @media (max-width: 640px) {
+            .logo-text {
+                display: none;
+            }
+        }
+
+        .header-right {
+            display: none;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .header-right {
+                display: flex !important;
+            }
+        }
+
+        .perspective-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+        }
+
+        .toggle-btn {
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            border: none;
+            background-color: transparent;
+            color: #4b5563;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .toggle-btn.active {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            color: #7c3aed;
+        }
+
+        .menu-button {
+            display: block;
+            width: 24px;
+            height: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .menu-button {
+                display: none !important;
+            }
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            border-top: 1px solid #e5e7eb;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #7c3aed 0%, #7c3aed 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            transition: box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+            transition: box-shadow 0.3s;
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-nav {
+            background-color: #f3f4f6;
+            color: #374151;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-nav:hover {
+            background-color: #e5e7eb;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        @media (min-width: 640px) {
+            .hero {
+                padding: 5rem 1rem;
+            }
+        }
+
+        .hero h1 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            color: #111827;
+        }
+
+        @media (min-width: 640px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            max-width: 56rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 1rem;
+        }
+
+        .section-light {
+            background: linear-gradient(180deg, #f9fafb 0%, #ffffff 100%);
+        }
+
+        .section-dark {
+            background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+            color: white;
+        }
+
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: #111827;
+        }
+
+        .section-dark .section-title {
+            color: white;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: #4b5563;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .card-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .card {
+            padding: 1.5rem;
+            background-color: #f9fafb;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .card-purple {
+            background: linear-gradient(135deg, #f3f0ff 0%, #faf5ff 100%);
+            border-color: #d8b4fe;
+        }
+
+        .card-purple h3 {
+            color: #6b21a8;
+        }
+
+        .card-purple li {
+            color: #6b21a8;
+        }
+
+        .card-blue {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+            border-color: #bfdbfe;
+        }
+
+        .card-blue h3 {
+            color: #1e40af;
+        }
+
+        .card-blue li {
+            color: #1e40af;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #111827;
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card li {
+            font-size: 0.875rem;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            line-height: 1.5;
+        }
+
+        /* Carousel */
+        .carousel-slide {
+            background: linear-gradient(135deg, #f3f0ff 0%, #faf5ff 100%);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e5e7eb;
+            min-height: 24rem;
+        }
+
+        .carousel-slide.blue {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+        }
+
+        .carousel-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .carousel-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .carousel-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 9999px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 1rem;
+        }
+
+        .carousel-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #6b21a8;
+        }
+
+        .carousel-slide.blue .carousel-title {
+            color: #1e40af;
+        }
+
+        .carousel-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .carousel-features h4 {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b21a8;
+        }
+
+        .carousel-slide.blue .carousel-features h4 {
+            color: #1e40af;
+        }
+
+        .carousel-features ul {
+            list-style: none;
+        }
+
+        .carousel-features li {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            color: #6b21a8;
+        }
+
+        .carousel-slide.blue .carousel-features li {
+            color: #1e40af;
+        }
+
+        .carousel-usecase {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-usecase p {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #6b21a8;
+            white-space: pre-wrap;
+        }
+
+        .carousel-slide.blue .carousel-usecase p {
+            color: #1e40af;
+        }
+
+        .carousel-usecase-label {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6b21a8;
+        }
+
+        .carousel-slide.blue .carousel-usecase-label {
+            color: #1e40af;
+        }
+
+        .carousel-usecase-title {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #6b21a8;
+        }
+
+        .carousel-slide.blue .carousel-usecase-title {
+            color: #1e40af;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .screenshot-placeholder {
+            aspect-ratio: 1;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            color: #6b5b65;
+            font-weight: 500;
+            text-align: center;
+            padding: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .carousel-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .dot {
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 9999px;
+            background-color: #d1d5db;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .dot.active {
+            background-color: #7c3aed;
+            width: 2rem;
+        }
+
+        .mobile-hint {
+            display: block;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .mobile-hint {
+                display: none;
+            }
+        }
+
+        /* Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .comparison-table thead {
+            background-color: #f3f4f6;
+            border-bottom: 2px solid #d1d5db;
+        }
+
+        .comparison-table th {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .comparison-table th:nth-child(2),
+        .comparison-table th:nth-child(3) {
+            text-align: center;
+        }
+
+        .comparison-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .comparison-table td:nth-child(2),
+        .comparison-table td:nth-child(3) {
+            text-align: center;
+        }
+
+        .comparison-table td:nth-child(3) {
+            font-weight: 600;
+            color: #7c3aed;
+        }
+
+        /* Form */
+        .form-section {
+            background-color: white;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            box-shadow: inset 0 0 0 2px #7c3aed;
+            border-color: transparent;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            cursor: pointer;
+        }
+
+        .success-message {
+            background-color: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            color: #166534;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111827;
+            color: #d1d5db;
+            padding: 3rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .footer-bottom {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .footer-bottom p {
+            font-size: 0.875rem;
+        }
+
+        /* Pricing */
+        .pricing-card {
+            background: linear-gradient(135deg, #f3f0ff 0%, #eff6ff 100%);
+            border: 1px solid #d8b4fe;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .pricing-card p {
+            color: #374151;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Self-ID Cards */
+        .selfid-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .selfid-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .selfid-card {
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border: 2px solid #d8b4fe;
+            background: linear-gradient(135deg, #f3f0ff 0%, #faf5ff 100%);
+        }
+
+        .selfid-card.blue {
+            border-color: #bfdbfe;
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%);
+        }
+
+        .selfid-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .selfid-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .selfid-card p {
+            font-size: 0.875rem;
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+
+        .selfid-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .selfid-features li {
+            font-size: 0.875rem;
+            color: #4b5563;
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .selfid-features li span:first-child {
+            font-weight: 700;
+        }
+
+        .selfid-link {
+            color: #7c3aed;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+
+        .selfid-link:hover {
+            color: #6d28d9;
+        }
+
+        .selfid-card.blue .selfid-link {
+            color: #2563eb;
+        }
+
+        .selfid-card.blue .selfid-link:hover {
+            color: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">S</div>
+                <span class="logo-text">Smart Property System</span>
+            </div>
+            
+            <div class="header-right">
+                <div class="perspective-toggle">
+                    <button class="toggle-btn manager active" onclick="setPerspective('manager')">Manager</button>
+                    <button class="toggle-btn resident" onclick="setPerspective('resident')">Resident</button>
+                </div>
+                <button class="btn-primary">Request a Demo</button>
+            </div>
+
+            <button class="menu-button" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="perspective-toggle">
+                <button class="toggle-btn manager active" onclick="setPerspective('manager'); toggleMobileMenu()">Manager</button>
+                <button class="toggle-btn resident" onclick="setPerspective('resident'); toggleMobileMenu()">Resident</button>
+            </div>
+            <button class="btn-primary">Request a Demo</button>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container" style="text-align: center;">
+            <h1 id="heroTitle">One App. Multiple Properties. Complete Control.</h1>
+            <p id="heroSubtitle">Stop managing smart homes, rentals, and communities across separate systems. SPS gives you one mobile app and web portal to control it all—reduce costs, eliminate manual work, and scale across your portfolio.</p>
+            <button class="btn-secondary">Request a Demo</button>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section-light">
+        <div class="container">
+            <h2 class="section-title" id="problemTitle">The Cost of Fragmentation</h2>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h3 id="card1Title">Operational Overhead</h3>
+                    <ul id="card1Items"></ul>
+                </div>
+                <div class="card">
+                    <h3 id="card2Title">Tenant/Resident Experience</h3>
+                    <ul id="card2Items"></ul>
+                </div>
+                <div class="card">
+                    <h3 id="card3Title">Scaling Challenges</h3>
+                    <ul id="card3Items"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section-light">
+        <div class="container">
+            <h2 class="section-title">Introducing Smart Property System (SPS)</h2>
+            
+            <div class="card-grid">
+                <div class="card card-purple">
+                    <h3 id="sol1Title">Unified Operations</h3>
+                    <ul id="sol1Items"></ul>
+                </div>
+                <div class="card card-blue">
+                    <h3 id="sol2Title">Reduced Costs</h3>
+                    <ul id="sol2Items"></ul>
+                </div>
+                <div class="card card-purple">
+                    <h3 id="sol3Title">Better Experience</h3>
+                    <ul id="sol3Items"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel -->
+    <section class="section-light">
+        <div class="container">
+            <h2 class="section-title">See How It Works</h2>
+            <p class="section-subtitle">Explore each module and discover how SPS simplifies your operations.</p>
+
+            <div>
+                <div class="carousel-slide" id="carouselSlide">
+                    <div class="carousel-content">
+                        <div>
+                            <div class="carousel-badge" id="carouselBadge">Smart Home</div>
+                            <h3 class="carousel-title" id="carouselTitle">Device Control at Your Fingertips</h3>
+                            
+                            <div class="carousel-features">
+                                <h4>Key Features</h4>
+                                <ul id="carouselFeatures"></ul>
+                            </div>
+                        </div>
+
+                        <div class="carousel-usecase">
+                            <p class="carousel-usecase-label" id="usecaseLabel">Property Owner View</p>
+                            <p class="carousel-usecase-title" id="usecaseTitle">The Scenario</p>
+                            <p id="usecaseText"></p>
+                        </div>
+                    </div>
+
+                    <div class="screenshot-grid">
+                        <div class="screenshot-placeholder">[Screenshot 1.1]</div>
+                        <div class="screenshot-placeholder">[Screenshot 1.2]</div>
+                        <div class="screenshot-placeholder">[Screenshot 1.3]</div>
+                    </div>
+                </div>
+
+                <div class="carousel-nav">
+                    <button class="btn-nav" onclick="prevSlide()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 19 8 12 15 5"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="carousel-dots" id="carouselDots"></div>
+
+                    <button class="btn-nav" onclick="nextSlide()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="5 19 12 12 5 5"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <p class="mobile-hint">← Swipe or use arrows to explore →</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="section-light">
+        <div class="container">
+            <h2 class="section-title">Why Choose SPS?</h2>
+            
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Capability</th>
+                            <th>Multiple Systems</th>
+                            <th>SPS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Single Login</td>
+                            <td>❌ (5+ apps)</td>
+                            <td>✅ (One app)</td>
+                        </tr>
+                        <tr>
+                            <td>Device Control</td>
+                            <td>✅ (Scattered)</td>
+                            <td>✅ (Unified)</td>
+                        </tr>
+                        <tr>
+                            <td>Workflows</td>
+                            <td>✅ (Fragmented)</td>
+                            <td>✅ (Automated)</td>
+                        </tr>
+                        <tr>
+                            <td>Operations</td>
+                            <td>✅ (Manual)</td>
+                            <td>✅ (All in-app)</td>
+                        </tr>
+                        <tr>
+                            <td>Cost per Unit</td>
+                            <td>High</td>
+                            <td>Lower</td>
+                        </tr>
+                        <tr>
+                            <td>Setup Time</td>
+                            <td>Weeks</td>
+                            <td>Days</td>
+                        </tr>
+                        <tr>
+                            <td>Staff Training</td>
+                            <td>Complex</td>
+                            <td>Simple</td>
+                        </tr>
+                        <tr>
+                            <td>Scaling</td>
+                            <td>Difficult</td>
+                            <td>Easy</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section>
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Flexible Pricing for Your Needs</h2>
+            <p class="section-subtitle">SPS pricing scales with your portfolio. Whether you manage a single property or 100+ units, we have a model that works for you.</p>
+            
+            <div class="pricing-card">
+                <p><strong>Pricing includes:</strong> Base platform fee + Per-unit cost (scales down as you grow) + Optional add-ons for advanced features</p>
+                <button class="btn-primary">Discuss Pricing & ROI</button>
+            </div>
+            <p style="color: #4b5563;">Get a custom quote based on your property type and portfolio size.</p>
+        </div>
+    </section>
+
+    <!-- Self-ID Cards -->
+    <section class="section-light">
+        <div class="container">
+            <h2 class="section-title">Which Solution Is Right for You?</h2>
+            <p class="section-subtitle">Not sure where to start? Find your perfect fit.</p>
+
+            <div class="selfid-grid">
+                <div class="selfid-card blue">
+                    <div class="selfid-icon">🏠</div>
+                    <h3>Smart Home</h3>
+                    <p>I own one or more properties and want to automate and control my own devices.</p>
+                    <ul class="selfid-features">
+                        <li><span>•</span><span>Device control & automation</span></li>
+                        <li><span>•</span><span>Guest access management</span></li>
+                        <li><span>•</span><span>Real-time monitoring</span></li>
+                    </ul>
+                    <a href="#" class="selfid-link">Learn More →</a>
+                </div>
+
+                <div class="selfid-card">
+                    <div class="selfid-icon">🏘️</div>
+                    <h3>Smart Rentals</h3>
+                    <p>I own and manage rental properties. I need to handle tenant onboarding and access control.</p>
+                    <ul class="selfid-features">
+                        <li><span>•</span><span>Multi-property management</span></li>
+                        <li><span>•</span><span>Tenant digital keys & lease automation</span></li>
+                        <li><span>•</span><span>Automatic access revocation</span></li>
+                    </ul>
+                    <a href="#" class="selfid-link">Learn More →</a>
+                </div>
+
+                <div class="selfid-card">
+                    <div class="selfid-icon">🏢</div>
+                    <h3>Smart Communities</h3>
+                    <p>I manage a condo, apartment building, or residential community.</p>
+                    <ul class="selfid-features">
+                        <li><span>•</span><span>Facility booking & visitor management</span></li>
+                        <li><span>•</span><span>Service request workflow</span></li>
+                        <li><span>•</span><span>Announcements & emergency alerts</span></li>
+                    </ul>
+                    <a href="#" class="selfid-link">Learn More →</a>
+                </div>
+
+                <div class="selfid-card blue">
+                    <div class="selfid-icon">🏨</div>
+                    <h3>Smart Hospitality</h3>
+                    <p>I operate a hotel or short-stay property. I need digital check-in and room access.</p>
+                    <ul class="selfid-features">
+                        <li><span>•</span><span>Contactless check-in/check-out</span></li>
+                        <li><span>•</span><span>Digital room access</span></li>
+                        <li><span>•</span><span>Guest lifecycle automation</span></li>
+                    </ul>
+                    <a href="#" class="selfid-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo CTA -->
+    <section class="section-dark">
+        <div class="container" style="text-align: center;">
+            <h2 class="section-title">Ready to Transform Your Property Operations?</h2>
+            <p class="section-subtitle">See SPS in action. Our team can give you a personalized walkthrough tailored to your property type and operational needs.</p>
+            <button style="background: white; color: #7c3aed; padding: 0.75rem 2rem; border-radius: 0.5rem; font-weight: 600; font-size: 1.125rem; border: none; cursor: pointer;">Request a Demo</button>
+        </div>
+    </section>
+
+    <!-- Form -->
+    <section>
+        <div class="form-section">
+            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 2rem; color: #111827;">Request Your Demo</h3>
+
+            <div id="successMessage" class="success-message" style="display: none;">✓ Thank you! We'll be in touch within 24 hours with your personalized demo.</div>
+
+            <form onsubmit="handleFormSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" name="fullName" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" name="email" required placeholder="you@company.com">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" name="phone" required placeholder="+63 9XX XXX XXXX">
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name *</label>
+                        <input type="text" name="company" required placeholder="Your company">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Property Type *</label>
+                        <select name="propertyType" required>
+                            <option value="">Select...</option>
+                            <option value="single-family">Single Family Home</option>
+                            <option value="rental">Rental Property Owner</option>
+                            <option value="community">Condo/Community Manager</option>
+                            <option value="hospitality">Hospitality Operator</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Properties/Units *</label>
+                        <select name="numUnits" required>
+                            <option value="">Select...</option>
+                            <option value="1-5">1-5</option>
+                            <option value="6-25">6-25</option>
+                            <option value="26-100">26-100</option>
+                            <option value="100+">100+</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Primary Interest *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" name="interests" value="Smart Home"> Smart Home</label>
+                        <label class="checkbox-label"><input type="checkbox" name="interests" value="Smart Rentals"> Smart Rentals</label>
+                        <label class="checkbox-label"><input type="checkbox" name="interests" value="Smart Communities"> Smart Communities</label>
+                        <label class="checkbox-label"><input type="checkbox" name="interests" value="Smart Hospitality"> Smart Hospitality</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Best Time to Contact</label>
+                    <select name="contactTime">
+                        <option value="">Select...</option>
+                        <option value="morning">Morning (9 AM - 12 PM)</option>
+                        <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+                        <option value="evening">Evening (5 PM - 8 PM)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea name="notes" placeholder="Tell us about your biggest operational challenge..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%;">Request Demo</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Smart Home</a></li>
+                        <li><a href="#">Smart Rentals</a></li>
+                        <li><a href="#">Smart Communities</a></li>
+                        <li><a href="#">Smart Hospitality</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About SPS</a></li>
+                        <li><a href="#">Blog & Resources</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024 Smart Property System. All rights reserved.</p>
+                <button class="btn-primary">Request a Demo</button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let perspective = 'manager';
+        let carouselIndex = 0;
+
+        const data = {
+            manager: {
+                heroTitle: "One App. Multiple Properties. Complete Control.",
+                heroSubtitle: "Stop managing smart homes, rentals, and communities across separate systems. SPS gives you one mobile app and web portal to control it all—reduce costs, eliminate manual work, and scale across your portfolio.",
+                problemTitle: "The Cost of Fragmentation",
+                card1Title: "Operational Overhead",
+                card1Items: ["Multiple systems = multiple subscriptions and logins", "Manual coordination between teams", "Duplicate tenant and property data", "Delayed response to tenant issues", "Time-consuming reporting"],
+                card2Title: "Tenant/Resident Experience",
+                card2Items: ["No unified way for tenants to control devices", "Confusing access methods", "Slow communication about maintenance", "Tenants can't easily book or request", "Fragmented information sources"],
+                card3Title: "Scaling Challenges",
+                card3Items: ["Difficult to manage 10, 50, or 100+ units", "Inconsistent processes across properties", "Limited portfolio visibility", "Hard to extract insights", "Complex staff role management"],
+                sol1Title: "Unified Operations",
+                sol1Items: ["✓ Manage all properties, tenants, and devices from one app", "✓ Role-based access for owners and managers", "✓ Real-time portfolio visibility", "✓ Seamless tenant onboarding"],
+                sol2Title: "Reduced Costs",
+                sol2Items: ["✓ Eliminate multiple software subscriptions", "✓ Reduce manual administrative overhead", "✓ Automatic lease-based access control", "✓ Faster issue resolution"]
+            },
+            resident: {
+                heroTitle: "One App. Your Home. Your Control.",
+                heroSubtitle: "Control your smart devices, book community facilities, track service requests, and stay connected to your building—all in one app.",
+                problemTitle: "The Frustration with Fragmentation",
+                card1Title: "Inconvenience",
+                card1Items: ["Multiple logins across different apps", "Hard to find building information", "No real-time updates on request status", "Submitting requests requires phone calls", "Scattered building announcements"],
+                card2Title: "Community Disconnect",
+                card2Items: ["Announcements buried in emails", "No easy way to book facilities", "Unclear visitor management", "Limited ways to communicate with staff", "Hard to access building amenities info"],
+                card3Title: "Device Control Confusion",
+                card3Items: ["Smart devices feel disconnected from community", "No integration between home and building services", "Limited visibility into available amenities", "Hard to share access with family/guests", "Confusing multi-system experience"],
+                sol1Title: "Convenience",
+                sol1Items: ["✓ Control devices from one app", "✓ Book facilities with one tap", "✓ Real-time updates on requests", "✓ No switching between apps"],
+                sol2Title: "Control & Privacy",
+                sol2Items: ["✓ You control what devices you manage", "✓ Know exactly when your lease ends", "✓ Share access on your terms", "✓ Building staff can't monitor you"]
+            }
+        };
+
+        const carouselData = [
+            {
+                name: 'Smart Home',
+                bgClass: 'blue',
+                tagline: 'Device Control at Your Fingertips',
+                features: ['Control smart locks, lights, switches, and sensors', 'Create custom automation scenes', 'Easy device pairing via QR code', 'Manage household members and access', 'Monitor device status in real-time'],
+                managerUseCase: {
+                    label: 'Property Owner View',
+                    title: 'The Scenario',
+                    text: "You own a vacation rental property. Instead of managing physical keys for family and guests, you want remote control and clarity over who can access what.\n\nWith SPS Smart Home: You add your spouse and adult children as household members—each gets device access through the same app. When your sister visits, you generate a temporary digital key valid for just her stay. She unlocks the door with her phone; no key pickup needed. You can revoke her access instantly when she leaves.\n\nOutcome: No more lost keys, easy guest management, automated routines reduce energy costs, peace of mind knowing exactly who has access."
+                },
+                residentUseCase: {
+                    label: 'Resident/Tenant View',
+                    title: 'The Experience',
+                    text: "You move into your new place. On move-in day, your landlord sends you a digital key through the app—you tap it and walk right in. No key pickup appointment. During the day, you use voice commands or the app to turn on lights before you get home. When guests arrive, you share a temporary access link with them—they unlock the door with their phones, and access expires at checkout time. You never worry about who has a physical copy of your key."
+                }
+            },
+            {
+                name: 'Smart Rentals',
+                bgClass: '',
+                tagline: 'Multi-Property Management Made Simple',
+                features: ['Multi-property dashboard (mobile app + web portal)', 'Digital access keys for tenants—automatic revocation at lease end', 'Tenant onboarding with clear lease terms', 'Role-based access for property managers', 'Tenant privacy & automated workflows'],
+                managerUseCase: {
+                    label: 'Property Owner View',
+                    title: 'The Challenge',
+                    text: "You own 15 rental units across the city. Every tenant move-in involves printing key cards and scheduling handovers. Every move-out, you call a locksmith—expensive and time-consuming. You have no visibility into the lease calendar.\n\nWith SPS Smart Rentals: When a new tenant signs a lease, you invite them into SPS and share your property with them. The tenant creates an account, and you set their lease start and end dates. They unlock the door through the app on move-in day—no physical keys, no logistics. You can see all your tenants and lease end dates in one dashboard. At lease end, the system automatically revokes their access at midnight—no manual intervention needed. Your managers can oversee specific properties.\n\nOutcome: 60% reduction in admin overhead, no locksmith costs, real-time visibility into tenant data, consistent processes across all properties."
+                },
+                residentUseCase: {
+                    label: 'Tenant/Renter View',
+                    title: 'The Experience',
+                    text: "Your lease is approved. Your landlord invites you to SPS and shares their property with you. You create an account, and the property appears in your app. On move-in day, you unlock the door through the app—no physical key needed. Throughout your tenancy, you can see your lease end date clearly. If you forget to lock the door when you leave, you can do it from anywhere. When your lease ends, the app notifies you of the expiry date. At checkout time, the system automatically revokes access—no awkward handover needed."
+                }
+            },
+            {
+                name: 'Smart Communities',
+                bgClass: '',
+                tagline: 'Connected, Efficient, Resident-Centric',
+                features: ['Resident app with facility booking & announcements', 'Building admin web portal for operations', 'Role-based staff access (reception, maintenance, etc.)', 'Visitor management with QR-based pre-registration', 'Service requests, emergency alerts & announcements'],
+                managerUseCase: {
+                    label: 'Building Admin View',
+                    title: 'The Challenge',
+                    text: "Your building has 200 units. Residents call about facility availability. Maintenance coordinates requests via WhatsApp. You have no way to notify everyone quickly during emergencies.\n\nWith SPS Smart Communities: Residents book facilities through the app—instant, self-service. Visitors pre-register with QR codes. Service requests come directly into your system. Maintenance gets notified automatically. You send one announcement—reaches all residents' phones instantly. You define staff roles: reception sees visitor management only; maintenance sees service requests only.\n\nOutcome: 40-50% reduction in admin overhead, faster issue resolution, improved security, better resident satisfaction, scalable without adding staff."
+                },
+                residentUseCase: {
+                    label: 'Resident View',
+                    title: 'The Experience',
+                    text: "You want to book the community pool for a party. You open the app, see the calendar with real-time availability, and reserve your date in 30 seconds. A few days later, you notice a leak in your bathroom. You submit a service request with a photo and get a ticket number instantly. Within an hour, the building notifies you that maintenance is scheduled. When a package arrives, you get notified. Building announcements appear in your app, so you never miss important updates."
+                }
+            }
+        ];
+
+        function setPerspective(p) {
+            perspective = p;
+            updateContent();
+        }
+
+        function updateContent() {
+            const current = data[perspective];
+            document.getElementById('heroTitle').textContent = current.heroTitle;
+            document.getElementById('heroSubtitle').textContent = current.heroSubtitle;
+            document.getElementById('problemTitle').textContent = current.problemTitle;
+            document.getElementById('card1Title').textContent = current.card1Title;
+            document.getElementById('card2Title').textContent = current.card2Title;
+            document.getElementById('card3Title').textContent = current.card3Title;
+            document.getElementById('sol1Title').textContent = current.sol1Title;
+            document.getElementById('sol2Title').textContent = current.sol2Title;
+
+            const renderList = (listId, items) => {
+                const el = document.getElementById(listId);
+                el.innerHTML = items.map(item => `<li>${item}</li>`).join('');
+            };
+
+            renderList('card1Items', current.card1Items);
+            renderList('card2Items', current.card2Items);
+            renderList('card3Items', current.card3Items);
+            renderList('sol1Items', current.sol1Items);
+            renderList('sol2Items', current.sol2Items);
+
+            // Update toggle buttons
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if ((perspective === 'manager' && btn.classList.contains('manager')) ||
+                    (perspective === 'resident' && btn.classList.contains('resident'))) {
+                    btn.classList.add('active');
+                }
+            });
+
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const slide = carouselData[carouselIndex];
+            const useCase = perspective === 'manager' ? slide.managerUseCase : slide.residentUseCase;
+
+            document.getElementById('carouselSlide').className = `carousel-slide ${slide.bgClass}`;
+            document.getElementById('carouselBadge').textContent = slide.name;
+            document.getElementById('carouselTitle').textContent = slide.tagline;
+            document.getElementById('usecaseLabel').textContent = useCase.label;
+            document.getElementById('usecaseTitle').textContent = useCase.title;
+            document.getElementById('usecaseText').textContent = useCase.text;
+
+            const featuresList = document.getElementById('carouselFeatures');
+            featuresList.innerHTML = slide.features.map(f => `<li><span>•</span><span>${f}</span></li>`).join('');
+
+            updateCarouselDots();
+        }
+
+        function updateCarouselDots() {
+            const dots = document.getElementById('carouselDots');
+            dots.innerHTML = carouselData.map((_, idx) => 
+                `<button class="dot ${idx === carouselIndex ? 'active' : ''}" onclick="goToSlide(${idx})"></button>`
+            ).join('');
+        }
+
+        function nextSlide() {
+            carouselIndex = (carouselIndex + 1) % carouselData.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            carouselIndex = (carouselIndex - 1 + carouselData.length) % carouselData.length;
+            updateCarousel();
+        }
+
+        function goToSlide(idx) {
+            carouselIndex = idx;
+            updateCarousel();
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('open');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const successDiv = document.getElementById('successMessage');
+            successDiv.style.display = 'block';
+            form.reset();
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 3000);
+        }
+
+        // Initial render
+        updateContent();
+    </script>
+</body>
+</html>
